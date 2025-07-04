@@ -1,0 +1,34 @@
+.display-wrapper {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 20px auto;
+
+  .user-item {
+    padding: 10px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #e6f7ff;
+      transform: scale(1.02);
+    }
+
+    .user-name {
+      font-weight: bold;
+      color: #333;
+    }
+    .user-age {
+  color: #777;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+  }
+  
+}

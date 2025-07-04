@@ -1,59 +1,47 @@
-import React from "react";
-class Useinfor extends React.Component{
-      state = {
-        name: 'dung',
-        age:258
-    }
-    handclick=(event)=>{
-        console.log("sdjfgj",this.state.name);
-    }
+import React, { useState } from "react";
 
-    handonchangeinput = (event)=>{
-        this.setState({
-            name:event.target.value
-        })
+const UseInfor = (props) => {
+  const [name, setName] = useState("dung");
+  const [age, setAge] = useState(258);
 
-    }
-     handonchangeeage = (event)=>{
-        this.setState({
-            age:event.target.value
-        })
+  const handleClick = () => {
+    console.log("Name:", name);
+  };
 
-    }
-    handonsumbit=(event)=>{
-            alert('sdjhfg');
-    }
-render(){
-    
-  
-    return(
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
 
-        <div>
-            mmy name is {this.state.name} and {this.state.age}
-                <button onClick={(event)=>this.handclick(event)}> clickme</button>
+  const handleAgeChange = (event) => {
+    setAge(Number(event.target.value));
+  };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.handsumbituser({
+      name,
+      age,
+    });
+  };
 
+  return (
+    <>
+      <p>
+        My name is {name} and I am {age} years old.
+      </p>
+      <button onClick={handleClick}>Click me</button>
 
-                <form onSubmit={(event)=>this.handonsumbit(event)}>
-                    <label>your nảme</label>
-                    <input 
-                    type="text"
-                    value={this.state.name}
-                    onChange={(event)=>this.handonchangeinput(event)}>
-                    </input>
+      <form onSubmit={handleSubmit}>
+        <label>Your name:</label>
+        <input type="text" value={name} onChange={handleNameChange} />
 
+        <label>Your age:</label>
+        <input type="number" value={age} onChange={handleAgeChange} />
 
-                     <label>your age</label>
-                    <input 
-                    type="text"
-                    value={this.state.age}
-                    onChange={(event)=>this.handonchangeeage(event)}>
-                    </input>
-                    <button>sumbit</button>
-                </form>
-        </div>
-    );
-}
-}
+        <button type="submit">Submit</button>
+      </form>
+    </>
+  );
+};
 
-export default Useinfor;
+export default UseInfor;
